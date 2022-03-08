@@ -1,0 +1,7 @@
+/*!
+ * vuex v4.0.2
+ * (c) 2021 Evan You
+ * @license MIT
+ */
+
+/*! js-cookie v3.0.1 | MIT */

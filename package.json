@@ -12,7 +12,7 @@
     "devDependencies": {
         "@tailwindcss/forms": "^0.5.0",
         "autoprefixer": "^10.4.2",
-        "axios": "^0.25",
+        "axios": "^0.25.0",
         "laravel-mix": "^6.0.6",
         "postcss": "^8.4.7",
         "resolve-url-loader": "^5.0.0",
@@ -21,7 +21,9 @@
     },
     "dependencies": {
         "@headlessui/vue": "^1.5.0",
+        "@heroicons/vue": "^1.0.6",
         "js-cookie": "^3.0.1",
+        "vform": "^2.1.2",
         "vue": "^3.2.31",
         "vue-router": "^4.0.13",
         "vuex": "^4.0.2"

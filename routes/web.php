@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\SpaController;
 use Illuminate\Support\Facades\Route;
 
@@ -13,5 +14,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+// Auth::routes();
+
+// Route::post('/login', [LoginController::class, 'login']);
 
 Route::get('{path}', SpaController::class)->where('path', '(.*)');

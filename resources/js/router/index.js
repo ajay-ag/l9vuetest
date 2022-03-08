@@ -2,12 +2,22 @@ import { createRouter, createWebHistory } from "vue-router";
 import store from "@/store";
 import guest from "./middleware/guest";
 import auth from "./middleware/auth";
+import checkAuth from "./middleware/check-auth";
 
-import Login from "@/components/Login";
-import Dashboard from "@/components/Dashboard";
-import Movies from "@/components/Movies";
+import Login from "@/page/Login";
+import Dashboard from "@/page/Dashboard";
+import Subject from "@/page/Subject";
+
+// The middleware for every page of the application.
+const globalMiddleware = [checkAuth];
 
 const routes = [
+  {
+    path: "/",
+    redirect: {
+      name: "login",
+    },
+  },
   {
     path: "/login",
     name: "login",
@@ -22,17 +32,17 @@ const routes = [
     component: Dashboard,
     meta: {
       middleware: [auth],
+      layout: "AppLayout",
     },
-    children: [
-      {
-        path: "/dashboard/movies",
-        name: "dashboard.movies",
-        component: Movies,
-        meta: {
-          middleware: [auth],
-        },
-      },
-    ],
+  },
+  {
+    path: "/subject",
+    name: "subject",
+    component: Subject,
+    meta: {
+      middleware: [auth],
+      layout: "AppLayout",
+    },
   },
 ];
 
@@ -52,11 +62,14 @@ const middlewarePipeline = (context, middleware, index) => {
   };
 };
 
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   if (!to.meta.middleware) {
     return next();
   }
-  const middleware = to.meta.middleware;
+
+  const middleware = [...globalMiddleware, ...to.meta.middleware];
+
+  console.log(middleware);
   const context = {
     to,
     from,

@@ -1,10 +1,13 @@
 <script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
+import { computed } from "@vue/runtime-core";
+import { useRoute } from "vue-router";
+
+const route = useRoute();
+const layout = computed(() => route.meta.layout || "DefaultLayout");
 </script>
 
 <template>
-  <router-view :key="$route.path"></router-view>
+  <component :is="layout" v-if="layout" />
 </template>
 
 <style>
