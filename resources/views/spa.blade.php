@@ -4,9 +4,6 @@ $config = [
 'locale' => $locale = app()->getLocale(),
 'locales' => config('app.locales'),
 ];
-$appJs = mix('dist/js/app.js');
-$appCss = mix('dist/js/app.css');
-$style = mix('dist/css/vue-styles.css');
 @endphp
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
